@@ -8,10 +8,35 @@ header {
   font-size: 36px;
 }
 
-body {
+fieldset {
+  width:200px;
+}
+
+div{
+  width:200px;
+  height:100px;
+  color:white;
+}
+
+#one {
+  background-color:#9E292E;
+}
+
+#two{
+  background-color:#C8AF80;
+}
+
+#three{
   background-color: #FFF0CE;
 }
 
+#four{
+  background-color:#3A4B6F;
+}
+
+#five{
+  background-color: #303030;
+}
 h2 {
   color:#3A4B6F;
 }
