@@ -16,10 +16,8 @@ shop.prototype.hourly = function () {
   for(i=0; i<hours.length-1;i++){
     this.cHours[i] = (Math.ceil(this.custRandom()*this.aveCookies));
     this.total+=this.cHours[i];
-    console.log(this.total);
   };
   this.cHours.push(this.total);
-  console.log(this.cHours);
 };
 
 var pike = new shop(17,88,5.2, "Pike Place Market");
@@ -29,8 +27,21 @@ var bellsq = new shop(20,48,3.3, "Bellevue Square");
 var alki = new shop(3,24,2.6, "Alki Beach");
 
 var rows = [pike,seatac,scMall,bellsq,alki];
-console.log(rows);
 
+function render(lala){
+  var makeTr = document.createElement("tr");
+  var makeTh = document.createElement("th");
+  makeTh.textContent= lala.storeFront;
+  makeTr.appendChild(makeTh);
+  lala.hourly();
+  for(var i=0; i<hours.length; i++){
+    var makeTd = document.createElement("td");
+    makeTd.textContent = lala.cHours[i];
+    makeTr.appendChild(makeTd);
+  };
+  makeTr.appendChild(makeTd);
+  return makeTr;
+};
 
 function table(){
   var produce = document.getElementById("sales");
@@ -44,72 +55,12 @@ function table(){
       makeTh.textContent = hours[i];
       makeTr.appendChild(makeTh)
   };
-  makeTb.appendChild(makeTr);//row one complete
-
-  var makeTr = document.createElement("tr");
-  var makeTh = document.createElement("th");
-  makeTh.textContent= pike.storeFront;
-  makeTr.appendChild(makeTh);
-  pike.hourly();
-  for(var i=0; i<hours.length; i++){
-    var makeTd = document.createElement("td");
-    makeTd.textContent = pike.cHours[i];
-    makeTr.appendChild(makeTd);
-  };
-  makeTr.appendChild(makeTd);
   makeTb.appendChild(makeTr);
 
-  var makeTr = document.createElement("tr");
-  var makeTh = document.createElement("th");
-  makeTh.textContent= "Seatac";
-  makeTr.appendChild(makeTh);
-  seatac.hourly();
-  for(var i=0; i<hours.length; i++){
-    var makeTd = document.createElement("td");
-    makeTd.textContent = seatac.cHours[i];
-    makeTr.appendChild(makeTd);
+  for(j=0; j<rows.length; j++){
+    var makeTr = render(rows[j]);
+    makeTb.appendChild(makeTr);
   };
-  makeTr.appendChild(makeTd);
-  makeTb.appendChild(makeTr);
-
-  var makeTr = document.createElement("tr");
-  var makeTh = document.createElement("th");
-  makeTh.textContent= "Southcenter Mall";
-  makeTr.appendChild(makeTh);
-  scMall.hourly();
-  for(var i=0; i<hours.length; i++){
-    var makeTd = document.createElement("td");
-    makeTd.textContent = scMall.cHours[i];
-    makeTr.appendChild(makeTd);
-  };
-  makeTr.appendChild(makeTd);
-  makeTb.appendChild(makeTr);
-
-  var makeTr = document.createElement("tr");
-  var makeTh = document.createElement("th");
-  makeTh.textContent= "Bellevue Square";
-  makeTr.appendChild(makeTh);
-  bellsq.hourly();
-  for(var i=0; i<hours.length; i++){
-    var makeTd = document.createElement("td");
-    makeTd.textContent = bellsq.cHours[i];
-    makeTr.appendChild(makeTd);
-  };
-  makeTr.appendChild(makeTd);
-  makeTb.appendChild(makeTr);
-
-  var makeTr = document.createElement("tr");
-  var makeTh = document.createElement("th");
-  makeTh.textContent= "Alki"
-  makeTr.appendChild(makeTh);
-  alki.hourly();
-  for(var i=0; i<hours.length; i++){
-    var makeTd = document.createElement("td");
-    makeTd.textContent = alki.cHours[i];
-    makeTr.appendChild(makeTd);
-  };
-  makeTr.appendChild(makeTd);
-  makeTb.appendChild(makeTr);
 
   produce.appendChild(makeTb);
 }
