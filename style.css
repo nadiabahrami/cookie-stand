@@ -12,8 +12,10 @@ body {
   background-color: #FFF0CE;
 }
 
-h2 {
+table {
   color:#3A4B6F;
+  border-width: thick;
+  border-color: black;
 }
 
 nav{

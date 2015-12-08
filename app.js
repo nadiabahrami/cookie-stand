@@ -1,10 +1,10 @@
-var hours =["10am: ","11am: ", "12pm: ","1pm: ","2pm: ", "3pm: ","4pm: ", "5pm: ", "Total: "];
-
-
-function shop(min,max,aveCookies) {
+var hours =["10am","11am", "12pm","1pm","2pm", "3pm","4pm", "5pm", "Total"];
+function shop(min,max,aveCookies,storeFront) {
   this.min = min;
   this.max = max;
   this.aveCookies = aveCookies;
+  this.storeFront = storeFront;
+  this.cHours=[];
 }
 
 shop.prototype.custRandom = function () {
@@ -13,7 +13,6 @@ shop.prototype.custRandom = function () {
 
 shop.prototype.hourly = function () {
   this.total = 0;
-  this.cHours=[];
   for(i=0; i<hours.length-1;i++){
     this.cHours[i] = (Math.ceil(this.custRandom()*this.aveCookies));
     this.total+=this.cHours[i];
@@ -23,34 +22,95 @@ shop.prototype.hourly = function () {
   console.log(this.cHours);
 };
 
-var pike = new shop(17,88,5.2);
-var seatac = new shop(6,44,1.2);
-var scMall = new shop(11,38,1.9);
-var bellsq = new shop(20,48,3.3);
-var alki = new shop(3,24,2.6);
+var pike = new shop(17,88,5.2, "Pike Place Market");
+var seatac = new shop(6,44,1.2,"SeaTac");
+var scMall = new shop(11,38,1.9,"South Center Mall");
+var bellsq = new shop(20,48,3.3, "Bellevue Square");
+var alki = new shop(3,24,2.6, "Alki Beach");
 
-function lists(id,location){
- var store = document.getElementById(id);
- var createTr = document.createElement("tr");
- //createTr.appendChild(document.createTextNode('Hours'));
- for(i=0;i<hours.length;i++){
-   var createTd1 = document.createElement("td");
-   var createTd2 = document.createElement("td");
-   createTd1.textContent = hours[i]
-   createTd2.textContent = location.cHours[i]+" cookies";
-   createTr.appendChild(createTd1);
-   createTr.appendChild(createTd2);
- };
- store.appendChild(createTr);
+var rows = [pike,seatac,scMall,bellsq,alki];
+console.log(rows);
+
+
+function table(){
+  var produce = document.getElementById("sales");
+  var makeTb = document.createElement("table");
+  var makeTr = document.createElement("tr");
+  var makeTh = document.createElement("th");
+  makeTh.textContent= "Locations";
+  makeTr.appendChild(makeTh);
+  for(var i=0; i<hours.length; i++){
+      var makeTh = document.createElement("th");
+      makeTh.textContent = hours[i];
+      makeTr.appendChild(makeTh)
+  };
+  makeTb.appendChild(makeTr);//row one complete
+
+  var makeTr = document.createElement("tr");
+  var makeTh = document.createElement("th");
+  makeTh.textContent= pike.storeFront;
+  makeTr.appendChild(makeTh);
+  pike.hourly();
+  for(var i=0; i<hours.length; i++){
+    var makeTd = document.createElement("td");
+    makeTd.textContent = pike.cHours[i];
+    makeTr.appendChild(makeTd);
+  };
+  makeTr.appendChild(makeTd);
+  makeTb.appendChild(makeTr);
+
+  var makeTr = document.createElement("tr");
+  var makeTh = document.createElement("th");
+  makeTh.textContent= "Seatac";
+  makeTr.appendChild(makeTh);
+  seatac.hourly();
+  for(var i=0; i<hours.length; i++){
+    var makeTd = document.createElement("td");
+    makeTd.textContent = seatac.cHours[i];
+    makeTr.appendChild(makeTd);
+  };
+  makeTr.appendChild(makeTd);
+  makeTb.appendChild(makeTr);
+
+  var makeTr = document.createElement("tr");
+  var makeTh = document.createElement("th");
+  makeTh.textContent= "Southcenter Mall";
+  makeTr.appendChild(makeTh);
+  scMall.hourly();
+  for(var i=0; i<hours.length; i++){
+    var makeTd = document.createElement("td");
+    makeTd.textContent = scMall.cHours[i];
+    makeTr.appendChild(makeTd);
+  };
+  makeTr.appendChild(makeTd);
+  makeTb.appendChild(makeTr);
+
+  var makeTr = document.createElement("tr");
+  var makeTh = document.createElement("th");
+  makeTh.textContent= "Bellevue Square";
+  makeTr.appendChild(makeTh);
+  bellsq.hourly();
+  for(var i=0; i<hours.length; i++){
+    var makeTd = document.createElement("td");
+    makeTd.textContent = bellsq.cHours[i];
+    makeTr.appendChild(makeTd);
+  };
+  makeTr.appendChild(makeTd);
+  makeTb.appendChild(makeTr);
+
+  var makeTr = document.createElement("tr");
+  var makeTh = document.createElement("th");
+  makeTh.textContent= "Alki"
+  makeTr.appendChild(makeTh);
+  alki.hourly();
+  for(var i=0; i<hours.length; i++){
+    var makeTd = document.createElement("td");
+    makeTd.textContent = alki.cHours[i];
+    makeTr.appendChild(makeTd);
+  };
+  makeTr.appendChild(makeTd);
+  makeTb.appendChild(makeTr);
+
+  produce.appendChild(makeTb);
 }
-
-pike.hourly();
-lists("pikey",pike);
-seatac.hourly();
-lists("seatown",seatac);
-scMall.hourly();
-lists("mall",scMall);
-bellsq.hourly();
-lists("square",bellsq);
-alki.hourly();
-lists("beach",alki);
+table();
