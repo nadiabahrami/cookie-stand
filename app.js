@@ -71,7 +71,7 @@ elFranchise.addEventListener("submit", function(event){
   var storeName = event.target.storeFront.value;
   var minimum = parseInt(event.target.min.value);
   var maximum = parseInt(event.target.max.value);
-  var ave = parseInt(event.target.aveCookies.value);
+  var ave = parseFloat(event.target.aveCookies.value);
   var stand = new shop(minimum,maximum,ave, storeName);
   rows.push(stand);
   produce.textContent =" ";
