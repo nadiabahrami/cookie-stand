@@ -69,9 +69,9 @@ var elFranchise = document.getElementById("franchise");
 elFranchise.addEventListener("submit", function(event){
   event.preventDefault();
   var storeName = event.target.storeFront.value;
-  var minimum = event.target.min.value;
-  var maximum = event.target.max.value;
-  var ave = event.target.aveCookies.value;
+  var minimum = parseInt(event.target.min.value);
+  var maximum = parseInt(event.target.max.value);
+  var ave = parseInt(event.target.aveCookies.value);
   var stand = new shop(minimum,maximum,ave, storeName);
   rows.push(stand);
   produce.textContent =" ";
