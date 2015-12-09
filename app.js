@@ -1,114 +1,67 @@
-var hours =["10am: ","11am: ", "12pm: ","1pm: ","2pm: ", "3pm: ","4pm: ", "5pm: ", "Total: "];
+var hours =["10am","11am", "12pm","1pm","2pm", "3pm","4pm", "5pm", "Total"];
+function shop(min,max,aveCookies,storeFront) {
+  this.min = min;
+  this.max = max;
+  this.aveCookies = aveCookies;
+  this.storeFront = storeFront;
+  this.cHours=[];
+}
 
-var pike = {
-  min:17,
-  max:88,
-  aveCookies: 5.2,
-  total:0,
-  custRandom: function(){
-    return Math.round(Math.random()*(this.max-this.min)+ this.min);
-  },
-    cHours:[],
-  hourly: function(){
-    for(i=0; i<hours.length-1;i++){
-      this.cHours[i] = (Math.ceil(this.custRandom()*this.aveCookies));
-      this.total+=this.cHours[i];
-    };
-    this.cHours.push(this.total);
-  }
+shop.prototype.custRandom = function () {
+  return Math.round(Math.random()*(this.max-this.min)+ this.min);
 };
 
- function lists(id,location){
-   var store = document.getElementById(id);
-   var createUl = document.createElement("ul");
-   createUl.appendChild(document.createTextNode('Hours'));
-   for(i=0;i<hours.length;i++){
-     var createLi = document.createElement("li");
-     createLi.textContent = hours[i]+location.cHours[i]+" cookies";
-     createUl.appendChild(createLi);
-   };
-   store.appendChild(createUl);
- }
-
-var seatac = {
-  min:6,
-  max:44,
-  aveCookies: 1.2,
-  total:0,
-  custRandom: function(){
-    return Math.round(Math.random()*(this.max-this.min)+ this.min);
-  },
-    cHours:[],
-  hourly: function(){
-    for(i=0; i<hours.length-1;i++){
-      this.cHours[i] = (Math.ceil(this.custRandom()*this.aveCookies));
-      this.total+=this.cHours[i];
-    };
-    this.cHours.push(this.total);
-  }
+shop.prototype.hourly = function () {
+  this.total = 0;
+  for(i=0; i<hours.length-1;i++){
+    this.cHours[i] = (Math.ceil(this.custRandom()*this.aveCookies));
+    this.total+=this.cHours[i];
+  };
+  this.cHours.push(this.total);
 };
 
-var scMall = {
-  min:11,
-  max:38,
-  aveCookies: 1.9,
-  total:0,
-  custRandom: function(){
-    return Math.round(Math.random()*(this.max-this.min)+ this.min);
-  },
-    cHours:[],
-  hourly: function(){
-    for(i=0; i<hours.length-1;i++){
-      this.cHours[i] = (Math.ceil(this.custRandom()*this.aveCookies));
-      this.total+=this.cHours[i];
-    };
-    this.cHours.push(this.total);
-  }
+var pike = new shop(17,88,5.2, "Pike Place Market");
+var seatac = new shop(6,44,1.2,"SeaTac");
+var scMall = new shop(11,38,1.9,"South Center Mall");
+var bellsq = new shop(20,48,3.3, "Bellevue Square");
+var alki = new shop(3,24,2.6, "Alki Beach");
+
+var rows = [pike,seatac,scMall,bellsq,alki];
+
+function render(lala){
+  var makeTr = document.createElement("tr");
+  var makeTh = document.createElement("th");
+  makeTh.textContent= lala.storeFront;
+  makeTr.appendChild(makeTh);
+  lala.hourly();
+  for(var i=0; i<hours.length; i++){
+    var makeTd = document.createElement("td");
+    makeTd.textContent = lala.cHours[i];
+    makeTr.appendChild(makeTd);
+  };
+  makeTr.appendChild(makeTd);
+  return makeTr;
 };
 
-var bellsq = {
-  min:20,
-  max:48,
-  aveCookies: 3.3,
-  total:0,
-  custRandom: function(){
-    return Math.round(Math.random()*(this.max-this.min)+ this.min);
-  },
-    cHours:[],
-  hourly: function(){
-    for(i=0; i<hours.length-1;i++){
-      this.cHours[i] = (Math.ceil(this.custRandom()*this.aveCookies));
-      this.total+=this.cHours[i];
-    };
-    this.cHours.push(this.total);
-  }
-};
+function table(){
+  var produce = document.getElementById("sales");
+  var makeTb = document.createElement("table");
+  var makeTr = document.createElement("tr");
+  var makeTh = document.createElement("th");
+  makeTh.textContent= "Locations";
+  makeTr.appendChild(makeTh);
+  for(var i=0; i<hours.length; i++){
+      var makeTh = document.createElement("th");
+      makeTh.textContent = hours[i];
+      makeTr.appendChild(makeTh)
+  };
+  makeTb.appendChild(makeTr);
 
-var alki = {
-  min:3,
-  max:24,
-  aveCookies: 2.6,
-  total:0,
-  custRandom: function(){
-    return Math.round(Math.random()*(this.max-this.min)+ this.min);
-  },
-    cHours:[],
-  hourly: function(){
-    for(i=0; i<hours.length-1;i++){
-      this.cHours[i] = (Math.ceil(this.custRandom()*this.aveCookies));
-      this.total+=this.cHours[i];
-    };
-    this.cHours.push(this.total);
-  }
-};
+  for(j=0; j<rows.length; j++){
+    var makeTr = render(rows[j]);
+    makeTb.appendChild(makeTr);
+  };
 
-pike.hourly();
-lists("pikey",pike);
-seatac.hourly();
-lists("seatown",seatac);
-scMall.hourly();
-lists("mall",scMall);
-bellsq.hourly();
-lists("square",bellsq);
-alki.hourly();
-lists("beach",alki);
+  produce.appendChild(makeTb);
+}
+table();
