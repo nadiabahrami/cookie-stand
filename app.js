@@ -44,7 +44,7 @@ function render(lala){
 };
 
 function table(){
-  var produce = document.getElementById("sales");
+  produce = document.getElementById("sales");
   var makeTb = document.createElement("table");
   var makeTr = document.createElement("tr");
   var makeTh = document.createElement("th");
@@ -61,7 +61,19 @@ function table(){
     var makeTr = render(rows[j]);
     makeTb.appendChild(makeTr);
   };
-
   produce.appendChild(makeTb);
 }
 table();
+
+var elFranchise = document.getElementById("franchise");
+elFranchise.addEventListener("submit", function(event){
+  event.preventDefault();
+  var storeName = event.target.storeFront.value;
+  var minimum = event.target.min.value;
+  var maximum = event.target.max.value;
+  var ave = event.target.aveCookies.value;
+  var stand = new shop(minimum,maximum,ave, storeName);
+  rows.push(stand);
+  produce.textContent =" ";
+  table();
+});
