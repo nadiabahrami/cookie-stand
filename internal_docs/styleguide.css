@@ -17,7 +17,9 @@ div{
   height:100px;
   color:white;
 }
-
+#six {
+  font-family: 'Marvel', sans-serif;
+}
 #one {
   background-color:#9E292E;
 }
