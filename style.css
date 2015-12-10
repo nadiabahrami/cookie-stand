@@ -1,35 +1,77 @@
-header {
-  background-color: #C8AF80;
-  color:#9E292E;
-  margin:-8px;
-  text-align:center;
-  height:75px;
-  font-family: 'Marvel', sans-serif;
-  font-size: 36px;
-}
-
 body {
   background-color: #FFF0CE;
 }
 
+header {
+  background-color: #C8AF80;
+  color:#9E292E;
+  margin:-1%;
+  text-align:center;
+  height:75px;
+  font-family: 'Marvel', sans-serif;
+  font-size:75px;
+  font-weight:bold;
+
+}
+
 h2 {
   color:#3A4B6F;
+  font-family: 'Marvel', sans-serif;
+  font-size:36px;
 }
+
 table {
   color:black;
+  border:2px groove black;
+  background-color: #6E6E6E;
+  font-size:20px;
+  width:70%;
+  margin-left:15%;
+  margin-right:15%;
+
+}
+th:first-child {
+  width:200px;
+}
+th{
+  background-color: #D6D6D6;
+  color: black;
+  font-size-adjust: auto;
+  font-size:20px;
+  font-family:monospace;
+}
+tr:first-child {
+  font-family:"New Courier", Impact, serif;
+  color:green;
+}
+td {
+  color:black;
+  background-color:white;
+  font-family: 'Roboto Mono', monospace;
 }
 
 nav{
   background-color:#C8AF80;
   color:#303030;
+  list-style: none;
+  font-family: 'Droid Sans', sans-serif;
+  margin:-1%;
+}
+
+nav li {
+  display:inline;
 }
 
 img {
   border-color: #3A4B6F;
-  border-radius: 5px;
+  border-radius: 185px;
   border-style:solid;
+  border-width:2.5px;
+  padding: 1px;
+  width: 15%;
 }
 
 p {
   color: #303030;
+  font-family: 'Droid Sans', sans-serif;
 }

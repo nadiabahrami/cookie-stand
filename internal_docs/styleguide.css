@@ -4,7 +4,7 @@ header {
   margin:-8px;
   text-align:center;
   height:75px;
-  font-family: 'Marvel', sans-serif;
+  font-family: 'Marvel', Impact,sans-serif;
   font-size: 36px;
 }
 
@@ -18,7 +18,7 @@ div{
   color:white;
 }
 #six {
-  font-family: 'Marvel', sans-serif;
+  font-family: 'Marvel', Impact, sans-serif;
 }
 #one {
   background-color:#9E292E;
