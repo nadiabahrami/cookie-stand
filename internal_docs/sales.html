@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="style.css" type = "text/css">
+    <link href='https://fonts.googleapis.com/css?family=Marvel' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Roboto+Mono' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Droid+Sans' rel='stylesheet' type='text/css'>
+    <title>Pat's Cookie Stand</title>
+  </head>
+  <body>
+    <header>
+      <img src="internal_docs/salmon.png"/>
+      Pat's Cookie Shop
+      <!-- <h1> Pat's Cookie Shop</h1> -->
+    </header>
+    <nav>
+      <ul>
+        <li>Home</li>
+        <li>About</li>
+        <li>Shwag</li>
+        <li>Employees</li>
+      </ul>
+    </nav>
+    <h2>Regional daily sales</h2>
+    <section id ="sales"></section>
+    <form id = "franchise">
+    <fieldset>
+      <legend>New Franchise Information</legend>
+        <label for ="storeFront">Location:<label>
+          <input id = "storeFront" type="text" name="storeFront" size="12" maxlength="30" />
+        <label for ="min">Customer Min:<label>
+          <input id = "min" type="text" name="min" size="12" maxlength="4" />
+        <label for ="min">Customer Max:<label>
+          <input id = "max" type="text" name="max" size="12" maxlength="4" />
+        <label for ="min">Average Cookies/customer<label>
+          <input id = "aveCookies" type="text" name="aveCookies" size="12" maxlength="4" />
+        <input id = "user_submit" type="submit" value ="submit"/>
+      </fieldset>
+    </form>
+    <script src = "app.js"></script>
+  </body>
+</html>
