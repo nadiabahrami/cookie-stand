@@ -68,12 +68,21 @@ table();
 var elFranchise = document.getElementById("franchise");
 elFranchise.addEventListener("submit", function(event){
   event.preventDefault();
-  var storeName = event.target.storeFront.value;
+  var storeName = event.target.storeName.value;
   var minimum = parseInt(event.target.min.value);
   var maximum = parseInt(event.target.max.value);
   var ave = parseFloat(event.target.aveCookies.value);
   var stand = new shop(minimum,maximum,ave, storeName);
-  rows.push(stand);
+  var check=0;
+  for(var k=0; k<rows.length;k++){
+    if(rows[k].storeFront==storeName){
+      rows[k]=stand;
+      check++;
+    }
+  };
+  if(check ===0){
+    rows.push(stand);
+  }
   produce.textContent =" ";
   table();
 });

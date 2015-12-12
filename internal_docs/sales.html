@@ -16,28 +16,33 @@
     </header>
     <nav>
       <ul>
-        <li>Home</li>
+        <a href="../index.html"><li>Home</li></a>
         <li>About</li>
-        <li>Shwag</li>
+        <li>Shop</li>
+        <li>Events</li>
         <li>Employees</li>
       </ul>
+      <h2 id ="tag_line">Salmon cookies made with fish, salmon cookies are delish!</h2>
     </nav>
-    <h2>Regional daily sales</h2>
-    <section id ="sales"></section>
-    <form id = "franchise">
-    <fieldset>
-      <legend>New Franchise Information</legend>
-        <label for ="storeFront">Location:<label>
-          <input id = "storeFront" type="text" name="storeFront" size="12" maxlength="30" />
-        <label for ="min">Customer Min:<label>
-          <input id = "min" type="text" name="min" size="12" maxlength="4" />
-        <label for ="min">Customer Max:<label>
-          <input id = "max" type="text" name="max" size="12" maxlength="4" />
-        <label for ="min">Average Cookies/customer<label>
-          <input id = "aveCookies" type="text" name="aveCookies" size="12" maxlength="4" />
-        <input id = "user_submit" type="submit" value ="submit"/>
-      </fieldset>
-    </form>
+    <section class="stick">
+      <h2>Regional Daily Sales</h2>
+      <section id ="sales"></section>
+      <p>Employees/new Franchise Owners:  Please update sales information of existing stores or add new franchise sales data using the form below.</p>
+      <form id = "franchise">
+      <fieldset>
+        <legend>New Franchise Information</legend>
+          <label for ="storeFront">Location:<label>
+            <input id = "storeName" type="text" name="storeName" size="12" maxlength="30" />
+          <label for ="min">Customer Min:<label>
+            <input id = "min" type="text" name="min" size="12" maxlength="4" />
+          <label for ="min">Customer Max:<label>
+            <input id = "max" type="text" name="max" size="12" maxlength="4" />
+          <label for ="min">Average Cookies/customer<label>
+            <input id = "aveCookies" type="text" name="aveCookies" size="12" maxlength="4" />
+          <input id = "user_submit" type="submit" value ="submit"/>
+        </fieldset>
+      </form>
+  </section>
     <script src = "../app.js"></script>
   </body>
 </html>
