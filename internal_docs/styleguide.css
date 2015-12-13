@@ -18,8 +18,12 @@ div{
   color:white;
 }
 #six {
-  font-family: 'Marvel', Impact, sans-serif;
+  font-family: 'Marvel', Arial, sans-serif;
 }
+#seven{
+  font-family:"Droid Sans",sans-serif;
+}
+
 #one {
   background-color:#9E292E;
 }
